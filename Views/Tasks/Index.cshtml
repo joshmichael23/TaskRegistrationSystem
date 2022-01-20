@@ -1,0 +1,55 @@
+﻿@model IEnumerable<TaskRegistrationSystem.Models.Tasks>
+
+@{
+    ViewData["Title"] = "Tasks";
+}
+
+<h1>Index</h1>
+
+<p>
+    <a asp-action="Create">Create New</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                Tasks
+            </th>
+            <th>
+                Programmer's Name
+            </th>
+            <th>
+                Date Created
+            </th>
+            <th>
+                Action
+            </th>
+            <th>
+
+            </th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.TaskName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Programmer)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.IssueDate, "{0:dd/MM/yyyy}")
+
+
+            </td>
+
+            <td>
+                <a asp-action="Edit" asp-route-id="@item.ID">Edit</a>
+                <a asp-action="Delete" asp-route-id="@item.ID">Delete</a>
+            </td>
+            
+        </tr>
+}
+    </tbody>
+</table>
